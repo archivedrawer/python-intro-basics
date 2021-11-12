@@ -109,3 +109,33 @@ print("spam, eggs, ham".split(", ")) # prints "['spam', 'eggs', 'ham']"
 def main(n):
   return n + 1
 print(main(num))
+
+if __name__ == '__main__':
+  print('im not imported, im a script!')
+
+import time
+import traceback
+
+# while True:
+#   try:
+#     print('Vrummmmmmm')
+#     time.sleep(0.1)
+#     raise Exception('que')
+#   except Exception:
+#     print('unheeeee')
+
+try:
+  raise Exception('unheeee')
+except Exception as e:
+  print(e)
+  traceback.print_exc()
+  print(traceback.format_exc)
+
+print('ALWAYS MAKE LISTS AS SETs OR HASH TABLES')
+
+def fun(str, arr=None):
+  if isinstance(arr, type(None)):
+    arr = []
+  for s in str:
+    arr.append(s)
+  return arr
