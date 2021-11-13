@@ -115,7 +115,7 @@ def main():
   print('Hello World!')
   print('im not a file, im a script!')
 if __name__ == '__main__':
-  main()
+  main() # prevents from runing scripts when importing
   _ = 'dont use me!'
 
 import time
@@ -126,19 +126,19 @@ import traceback
 #     print('Vrummmmmmm')
 #     time.sleep(0.1)
 #     raise Exception('que')
-#   except Exception:
+#   except Exception: # != 'exception', excludes keyboardinterrupt (^C)
 #     print('unheeeee')
 
 try:
   raise Exception('unheeee')
 except Exception as e:
   print(e)
-  traceback.print_exc()
+  traceback.print_exc() # keeps track of the trouble
   print(traceback.format_exc)
 
 print('ALWAYS MAKE LISTS AS SETs OR HASH TABLES')
 
-def fun(str, arr=None):
+def fun(str, arr=None): # prevents reassigning the arr im memory
   if isinstance(arr, type(None)):
     arr = []
   for s in str:
@@ -172,11 +172,11 @@ print(
 
 print(
   {fruit['name']: fruit['price'] for fruit in fruits}
-)
+) # {'apple': 20, 'avocado': 10, 'orange': 5}
 
 add: lambda x,y: x + y # lambda function
 
-# more_than_one_nums = filter(lambda x: x > 1, [1, 2, 3])
+# more_than_one_nums = filter(lambda x: x > 1, [1, 2, 3]) # inline functions
 # print(more_than_one_nums)
 
 condition = True
@@ -184,7 +184,7 @@ x = 1 if condition else 0
 # ternary
 
 num1 = 10_000_000_000
-num2 = 100_000_000
+num2 = 100_000_000 # grouping numbers w/o messing code
 total = num1 + num2
 print(f'{total:,}') # 10,100,000,000
 
@@ -239,6 +239,7 @@ person = Person()
 
 # setattr(person, first_key, first_val)
 # first = getattr(person, first_key)
+# uses functions to set/get keys and values from a object
 
 for fruit in fruits:
   for key, value in fruit.items():
@@ -249,11 +250,10 @@ for fruit in fruits:
 #   print(getattr(person, key))
 
 from getpass import getpass
-
 username = input('Username: ')
 password = getpass('Password: ')
-
 print('Logging In...')
+#set a get password function, hiding the input
 
 # help(module_name)
 
