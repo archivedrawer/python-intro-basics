@@ -110,8 +110,13 @@ def main(n):
   return n + 1
 print(main(num))
 
+# file != script
+def main():
+  print('Hello World!')
+  print('im not a file, im a script!')
 if __name__ == '__main__':
-  print('im not imported, im a script!')
+  main()
+  _ = 'dont use me!'
 
 import time
 import traceback
@@ -139,3 +144,120 @@ def fun(str, arr=None):
   for s in str:
     arr.append(s)
   return arr
+# better way to assign arrays
+
+# python -i file.py
+
+# import pdb
+# pdb.set_trace()
+# debug code
+
+# $ pip install virtual env
+# $ virtualenv venv
+# $ source venv/bin/activate
+# # also as
+# $ python -m venv my_venv
+# $ python file.py // python -m file
+
+fruits = [
+  {'name': 'apple', 'price': 20},
+  {'name': 'avocado', 'price': 10},
+  {'name': 'orange', 'price': 5}
+] # Dictionary
+
+print(
+  # list comprehension
+  [fruit['name'] for fruit in fruits if fruit['name'][0] == 'a']
+) # ['apple', 'avocado']
+
+print(
+  {fruit['name']: fruit['price'] for fruit in fruits}
+)
+
+add: lambda x,y: x + y # lambda function
+
+# more_than_one_nums = filter(lambda x: x > 1, [1, 2, 3])
+# print(more_than_one_nums)
+
+condition = True
+x = 1 if condition else 0
+# ternary
+
+num1 = 10_000_000_000
+num2 = 100_000_000
+total = num1 + num2
+print(f'{total:,}') # 10,100,000,000
+
+# context manager
+# with open('file', 'r') as f:
+#   content = f.raed()
+# print(len(content.split(' ')))
+# better way to manage resources
+
+names = ['Otávio', 'Pedro', 'Marina', 'Alex']
+apelidos = ['Ota', 'Pepe', 'Nina', 'Alek']
+
+for index, name in enumerate(names, start=1):
+  print(index, name)
+# enumarete function, same as JavaScript forEach
+
+for name, apelido in zip(names, apelidos):
+  print(f'O apelido do {name} é {apelido}')
+
+# packinhg and unpacking
+
+# normal
+items = (1, 2)
+print(items) # (1, 2)
+
+# umpacking
+
+# a, b = (1, 2)
+a, _ = (1, 2) # _ as variable is ignored by the code
+print(a) # 1
+# print(b) # 2
+
+# a, b, c = (1, 2) # error, not enough values to unpack
+# a, b = (1, 2, 3) # error, not enough variables to assign
+
+a, b, *c, d = (1, 2, 3, 4, 5, 6, 7)
+print(a) # 1
+print(b) # 2
+print(c) # [3, 4, 5, 6] # all unassigned values # can be set as _ too
+print(d) # 7 # last value
+
+class Person(): # Object
+  pass
+
+person = Person()
+
+# person.first = 'Otávio'
+# person.last = 'Pedro'
+
+# first_key = 'first'
+# first_val = 'Pedro'
+
+# setattr(person, first_key, first_val)
+# first = getattr(person, first_key)
+
+for fruit in fruits:
+  for key, value in fruit.items():
+    setattr(person, key, value)
+  print(person.name, person.price)
+
+# for key in person.keys():
+#   print(getattr(person, key))
+
+from getpass import getpass
+
+username = input('Username: ')
+password = getpass('Password: ')
+
+print('Logging In...')
+
+# help(module_name)
+
+from datetime import datetime
+dir(datetime)
+datetime.today
+datetime.today()
