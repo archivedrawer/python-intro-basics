@@ -2,6 +2,7 @@ from platform import python_version
 from itertools import zip_longest
 import itertools
 import math
+from typing import final
 print('Hello World!')
 
 num = int(input())
@@ -77,6 +78,9 @@ print(words[2]) # !
 print(str[6]) # W
 print(words + [1, 2, 3]) # ['hello', 'world', '!', 1, 2, 3]
 print([1, 2, 3] + [4, 5, 6]) # [1, 2, 3, 4, 5, 6]
+print([1, 2, 3].extend([4, 5, 6]))
+
+ord('a') # unicode value
 
 print('hello' in words) # True
 print(4 not in [1, 2, 3]) # True
@@ -202,7 +206,7 @@ print(
   {fruit['name']: fruit['price'] for fruit in fruits}
 ) # {'apple': 20, 'avocado': 10, 'orange': 5}
 
-add: lambda x,y: x + y # lambda function
+add: lambda x,y: x + y # lambda anonymous function
 
 # more_than_one_nums = filter(lambda x: x > 1, [1, 2, 3]) # inline functions
 # print(more_than_one_nums)
@@ -533,3 +537,54 @@ print(zip_lists(names, points))
 
 print(python_version())
 # 3.9.8
+
+x = set()
+y = {1, 2, 3, 4, 4} # set # {1, 2, 3, 4}
+z = {} # dict
+y.add(5)
+y.remove(1)
+y = {2, 3, 4, 5}
+w = [2, 3, 4, 5]
+print(2 in y) # faster
+print(2 in w) # lowest
+# y.union()
+# y.intersection()
+# y.difference()
+
+del fruits['avocado']
+print(list(fruits.keys()))
+print(list(fruits.values()))
+
+w = [i for i in range(100) if i % 5 == 0] # list
+x = {i for i in range(100) if i % 5 == 0} # set
+y = {i:0 for i in range(100) if i % 5 == 0} # dictionary
+z = (i for i in range(100) if i % 5 == 0) # generated
+z = tuple(i for i in range(100) if i % 5 == 0) # tuple
+
+def func(*args, **kwargs):
+  print(args, kwargs)
+
+func(1, 2, 3, 4, 5, one=1, two=2)
+
+# scopes and global
+x = 'pep' # global
+def func(name):
+  x = name # local
+
+x = 'pep' # global
+def func(name):
+  global x
+  x = name # global... never use
+
+try:
+  x = 7 / 0
+except Exception as e:
+  print(e)
+finally:
+  print('done')
+
+x = [1, 2, 23, 54, 123, 56, 324, 34, 6]
+mp = map(lambda i: i + 2, x)
+print(list(mp))  # [3, 4, 25, 56, 125, 58, 326, 36, 8]
+mp = filter(lambda i: i % 4 == 0, x)
+print(list(mp))  # [56, 324]
