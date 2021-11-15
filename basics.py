@@ -163,14 +163,15 @@ import traceback
 
 try:
   raise Exception('unheeee')
-except Exception as e:
+except Exception as e: # ValueError => alternative but more precise and correct way
   print(e)
   traceback.print_exc() # keeps track of the trouble
   print(traceback.format_exc)
 
 print('ALWAYS MAKE LISTS AS SETs OR HASH TABLES')
 
-def fun(str, arr=None): # prevents reassigning the arr im memory
+def fun(str, arr=None):
+# prevents reassigning the array im memory # dont cache previous values # redfines itself
   if isinstance(arr, type(None)):
     arr = []
   for s in str:
@@ -593,3 +594,7 @@ from functools import cache, lru_cache
 
 # @cache
 # @lru_cache(maxsize=5)
+
+# isinstance(p, tuple) # verify subclasses
+
+# import numpy as np
