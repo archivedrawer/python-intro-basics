@@ -588,3 +588,8 @@ mp = map(lambda i: i + 2, x)
 print(list(mp))  # [3, 4, 25, 56, 125, 58, 326, 36, 8]
 mp = filter(lambda i: i % 4 == 0, x)
 print(list(mp))  # [56, 324]
+
+from functools import cache, lru_cache
+
+# @cache
+# @lru_cache(maxsize=5)
